@@ -1,0 +1,11 @@
+[Unit]
+Description=Cube Control Service
+
+[Service]
+ExecStart=/data/cube/scripts/control-server.sh
+User=cube
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=network-online.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Cube Network Monitor
+
+[Service]
+ExecStart=/data/cube/scripts/network-monitor.sh
+User=root
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=network-online.target
