@@ -2,6 +2,7 @@
 Description=Cube Network Monitor
 
 [Service]
+ExecStartPre=/bin/sleep 60
 ExecStart=/data/cube/scripts/network-monitor.sh
 User=root
 Restart=on-abort
