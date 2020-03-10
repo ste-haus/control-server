@@ -1,8 +1,8 @@
 #!/bin/bash
 
-IP=192.168.0.1
 FREQUENCY=1
 LOG=/var/log/network-availibility.log
+IP=`route -n | grep 'UG[ \t]' | awk '{print $2}'`
 
 while true; do
     if ping -c 1 $IP &> /dev/null; then
