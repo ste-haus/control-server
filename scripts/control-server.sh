@@ -23,5 +23,8 @@ while read line; do
     elif [ "$line" == "restart" ]; then
         killall chrome
         export DISPLAY=:0.0 && google-chrome --kiosk --hide-scrollbars --autoplay-policy=no-user-gesture-required --touch-events "$CUBE_URL" &
+    elif [ "$line" == "maintenance" ]; then
+        killall chrome
+        export DISPLAY=:0.0 && google-chrome --autoplay-policy=no-user-gesture-required --touch-events "$CUBE_URL" &
     fi
 done < <(nc -k -l $PORT)
