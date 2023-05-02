@@ -17,11 +17,11 @@ while read line; do
     elif [ "$line" == "off" ]; then
         xset -display :0 dpms force off
     elif [ "$line" == "start" ]; then
-        export DISPLAY=:0.0 && google-chrome --kiosk --touch-events "$CUBE_URL" &
+        export DISPLAY=:0.0 && google-chrome --kiosk --autoplay-policy=no-user-gesture-required --touch-events "$CUBE_URL" &
     elif [ "$line" == "stop" ]; then
         killall chrome
     elif [ "$line" == "restart" ]; then
         killall chrome
-        export DISPLAY=:0.0 && google-chrome --kiosk --touch-events "$CUBE_URL" &
+        export DISPLAY=:0.0 && google-chrome --kiosk --autoplay-policy=no-user-gesture-required --touch-events "$CUBE_URL" &
     fi
 done < <(nc -k -l $PORT)
