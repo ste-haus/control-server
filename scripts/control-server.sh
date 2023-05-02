@@ -10,12 +10,12 @@ function runCommand {
         sleep 10
         runCommand on
     elif [ "$1" == "stop" ]; then
-        killall chrome
+        killall firefox
     elif [ "$1" == "restart" ]; then
-        killall chrome
+        runCommand stop
         runCommand start
     elif [ "$1" == "maintenance" ]; then
-        killall chrome
+        runCommand stop
         export DISPLAY=:0.0 && firefox -url "$CUBE_URL" &
     fi
 }
