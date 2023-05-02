@@ -17,14 +17,14 @@ while read line; do
     elif [ "$line" == "off" ]; then
         xset -display :0 dpms force off
     elif [ "$line" == "start" ]; then
-        export DISPLAY=:0.0 && google-chrome --kiosk --hide-scrollbars --autoplay-policy=no-user-gesture-required --touch-events "$CUBE_URL" &
+        export DISPLAY=:0.0 && firefox --kiosk "$CUBE_URL" &
     elif [ "$line" == "stop" ]; then
-        killall chrome
+        killall firefox
     elif [ "$line" == "restart" ]; then
-        killall chrome
-        export DISPLAY=:0.0 && google-chrome --kiosk --hide-scrollbars --autoplay-policy=no-user-gesture-required --touch-events "$CUBE_URL" &
+        killall firefox
+        export DISPLAY=:0.0 && firefox --kiosk "$CUBE_URL" &
     elif [ "$line" == "maintenance" ]; then
-        killall chrome
-        export DISPLAY=:0.0 && google-chrome --autoplay-policy=no-user-gesture-required --touch-events "$CUBE_URL" &
+        killall firefox
+        export DISPLAY=:0.0 && firefox -url "$CUBE_URL" &
     fi
 done < <(nc -k -l $PORT)
