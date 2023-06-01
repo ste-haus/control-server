@@ -6,7 +6,7 @@ function runCommand {
     elif [ "$1" == "off" ]; then
         xset -display :0 dpms force off
     elif [ "$1" == "start" ]; then
-        export DISPLAY=:0.0 && firefox --kiosk "$CUBE_URL" &
+        export DISPLAY=:0.0 && env MOZ_USE_XINPUT2=1 firefox --kiosk "$CUBE_URL" &
         sleep 10
         runCommand on
     elif [ "$1" == "stop" ]; then
@@ -16,7 +16,7 @@ function runCommand {
         runCommand start
     elif [ "$1" == "maintenance" ]; then
         runCommand stop
-        export DISPLAY=:0.0 && firefox -url "$CUBE_URL" &
+        export DISPLAY=:0.0 && env MOZ_USE_XINPUT2=1 firefox -url "$CUBE_URL" &
     fi
 }
 
