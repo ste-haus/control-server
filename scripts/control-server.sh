@@ -1,3 +1,12 @@
+#!/bin/bash
+
+## echo "on" | nc cube-3186 4444
+
+PORT=4444
+CUBE_URL="http://cube#touch"
+
+echo "Cube listening for commands on port $PORT..."
+
 function runCommand {
     if [ "$1" == 'reboot' ]; then
         sudo reboot
